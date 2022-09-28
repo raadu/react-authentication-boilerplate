@@ -1,0 +1,38 @@
+@import 'styles/index.scss';
+
+.userCardColumn {
+    display: flex;
+    padding: 12px 18px 12px 18px;
+}
+
+.userCardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userName {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.positionName {
+    font-size: 12px;
+    font-weight: 400;
+    color: #FFFFFF;
+    float: right;
+}
+
+.userImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+@media only screen and (max-width: 700px) {
+    .userDetailsContainer {
+        display: none;
+    }
+}
