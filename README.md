@@ -4,6 +4,10 @@ Boilerplate to start implementing Authentication with a better structure.<br/>
 Created using React.js <br/>
 Check [React Documentation](https://reactjs.org/docs/getting-started.html) for help.
 
+# Contents
+Added as different folders inside the project repo.
+1. [Authentication with API created from backend service](https://github.com/raadu/react-authentication-boilerplate/tree/main/with-api)
+
 # Installation 
 At first clone the github repository to your local machine. 
 ```
