@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Input, Checkbox, Button, notification } from "antd";
 import { AuthContext } from "context";
-import { postData } from "utils/api-service";
+import { getData, postData } from "utils/api-service";
 import { LOGIN } from "utils/api";
 import "./Login.scss";
 
@@ -26,12 +26,16 @@ const Login = () => {
 
     const LoginUser = async (values) => {
         const query = LOGIN();
+        const customQuery = `${query}?email=${values.email}&password=${values.password}`;
         const bodyObject = {
             email: values?.email,
             password: values?.password,
         };
-        const response = await postData(query, bodyObject);
-        if (response && response.code === 201) {
+        const response = await getData(customQuery);
+        if (response) {
+            console.log('response: ', response);
+            return;
+            
             const user = response?.data?.userDetails;
             const roles = response?.data?.userDetails?.roles;
             const accessToken = response?.data?.access_token;

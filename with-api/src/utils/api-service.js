@@ -2,7 +2,7 @@ import axios from "axios";
 import cookies from "js-cookie";
 import { BASE_URL } from './constants'
 
-const base_url = `${BASE_URL}/api/v1/`;
+const base_url = `${BASE_URL}`;
 
 const getAuthToken = () => {
     if (cookies.get("react_auth_user_data")) {
@@ -29,9 +29,11 @@ const generateHeaders = () => {
 
 export const getData = async (query, data, no_token) => {
   try {
+    console.log('ss', `${base_url}/${query}`);
+    
     let result = await axios({
       method: "GET",
-      url: `${base_url}${query}`,
+      url: `${base_url}/${query}`,
       params: data,
       headers: no_token ? {} : generateHeaders(),
     });
@@ -48,7 +50,7 @@ export const postData = async (query, data, no_token) => {
   try {
     let result = await axios({
       method: "POST",
-      url: `${base_url}${query}`,
+      url: `${base_url}/${query}`,
       headers: no_token ? {} : generateHeaders(),
       data: data,
     });
