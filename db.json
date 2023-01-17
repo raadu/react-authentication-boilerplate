@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+        "id": 1,
+        "code": 201,
+        "messages": [
+            "Success"
+        ],
+        "token_type": "Bearer",
+        "access_token": "49|A16n41lgfQ1wghZgT6BX4XS3svPNQlhJS9oydc5x",
+        "name": "Test User",
+        "email": "testuser@gmail.com",
+        "password": "123456",
+        "created_at": "2022-08-29T02:52:11.000000Z",
+        "updated_at": "2022-08-29T02:52:11.000000Z",
+        "permissions": [
+            {
+                "id": 5,
+                "name": "projects-list",
+                "created_at": "2022-08-29T02:52:11.000000Z",
+                "updated_at": "2022-08-29T02:52:11.000000Z",
+                "pivot": {
+                    "role_id": 1,
+                    "permission_id": 5
+                }
+            },
+            {
+                "id": 6,
+                "name": "projects-create",
+                "created_at": "2022-08-29T02:52:11.000000Z",
+                "updated_at": "2022-08-29T02:52:11.000000Z",
+                "pivot": {
+                    "role_id": 1,
+                    "permission_id": 6
+                }
+            },
+            {
+                "id": 7,
+                "name": "projects-show",
+                "created_at": "2022-08-29T02:52:11.000000Z",
+                "updated_at": "2022-08-29T02:52:11.000000Z",
+                "pivot": {
+                    "role_id": 1,
+                    "permission_id": 7
+                }
+            }
+        ]
+    }
+  ]
+}
