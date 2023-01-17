@@ -1,0 +1,64 @@
+// Dummy data added for mock API response
+
+export const DUMMMY_API_RESPONSE = {
+    code: 201,
+    access_token: "61|npdoScEKgrjUjAO0oQzQE6jk82v98hrs1GC1HSS3",
+    messages: ["Success"],
+    token_type: "Bearer",
+    userDetails: {
+        id: 1,
+        name: "Raiyad Raad",
+        email: "raiyad.raad@gmail.com",
+        created_at: "2022-08-29T02:52:11.000000Z",
+        updated_at: "2022-08-29T02:52:11.000000Z",
+        roles: [
+            {
+                id: 1,
+                name: "Project Management",
+                guard_name: "web",
+                created_at: null,
+                updated_at: null,
+                pivot: {
+                    model_id: 1,
+                    role_id: 1,
+                    model_type: "App\\Models\\User",
+                },
+                permissions: [
+                    {
+                        id: 5,
+                        name: "dashboard-show",
+                        guard_name: "web",
+                        created_at: "2022-08-29T02:52:11.000000Z",
+                        updated_at: "2022-08-29T02:52:11.000000Z",
+                        pivot: {
+                            role_id: 1,
+                            permission_id: 5,
+                        },
+                    },
+                    {
+                        id: 6,
+                        name: "menu-one-show",
+                        guard_name: "web",
+                        created_at: "2022-08-29T02:52:11.000000Z",
+                        updated_at: "2022-08-29T02:52:11.000000Z",
+                        pivot: {
+                            role_id: 1,
+                            permission_id: 6,
+                        },
+                    },
+                    {
+                        id: 7,
+                        name: "menu-two-show",
+                        guard_name: "web",
+                        created_at: "2022-08-29T02:52:11.000000Z",
+                        updated_at: "2022-08-29T02:52:11.000000Z",
+                        pivot: {
+                            role_id: 1,
+                            permission_id: 7,
+                        },
+                    },
+                ],
+            },
+        ],
+    },
+};

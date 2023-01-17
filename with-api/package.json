@@ -1,5 +1,5 @@
 {
-  "name": "with-api",
+  "name": "react-authentication-boilerplate-with-api",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,7 +8,9 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.23.3",
     "axios": "^0.27.2",
+    "bootstrap": "^5.2.3",
     "js-cookie": "^3.0.1",
+    "moment": "^2.29.4",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -18,7 +20,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "PORT=3008 react-scripts start",
+    "start": "react-scripts start",
+    "dev": "PORT=3008 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -47,7 +47,7 @@ function RootComponent() {
                             <Route path="/login" exact element={<Login />} />
                             <Route path="*" element={<ErrorPage />} />
                             {/* Routes that required authentication */}
-                            {routesArray?.map((routeItem, index) => {
+                            {routesArray && routesArray?.map((routeItem, index) => {
                                 return (
                                     <Route
                                         element={

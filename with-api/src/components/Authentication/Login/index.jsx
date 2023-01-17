@@ -2,9 +2,10 @@ import { useContext, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Input, Checkbox, Button, notification } from "antd";
 import { AuthContext } from "context";
-import { postData } from "utils/api-service";
-import { LOGIN } from "utils/api";
+import { postData, getData } from "utils/api-service";
+import { LOGIN } from "utils/endpoints";
 import "./Login.scss";
+import { DUMMMY_API_RESPONSE } from "utils/dummyData";
 
 const Login = () => {
     // Antd Constants
@@ -25,37 +26,57 @@ const Login = () => {
     };
 
     const LoginUser = async (values) => {
-        const query = LOGIN();
+        const query = LOGIN;
         const bodyObject = {
             email: values?.email,
             password: values?.password,
         };
-        const response = await postData(query, bodyObject);
-        if (response && response.code === 201) {
-            const user = response?.data?.userDetails;
-            const roles = response?.data?.userDetails?.roles;
-            const accessToken = response?.data?.access_token;
 
-            setAuth({ user, roles, accessToken });
-            setInitialLogin(true);
+        // Uncomment below lines and use with real backend API
+        // const response = await postData(query, bodyObject);
 
-            notification.success({
-                message: `User Logged In Successfully`,
-                placement: "topLeft",
-            });
 
-            navigate("/");
-        } else {
-            notification.error({
-                message: `${
-                    response?.messages
-                        ? response?.messages[0]
-                        : "Error User Login"
-                }`,
-                placement: "topLeft",
-            });
-            emailRef.current.focus();
-        }
+        // if (response && response.code === 201) {
+        //     const accessToken = response?.access_token;
+        //     const user = response?.userDetails;
+        //     const roles = response?.userDetails?.roles;
+
+        //     setAuth({ user, roles, accessToken });
+        //     setInitialLogin(true);
+
+        //     notification.success({
+        //         message: `User Logged In Successfully`,
+        //         placement: "topLeft",
+        //     });
+
+        //     navigate("/");
+        // } else {
+        //     notification.error({
+        //         message: `${
+        //             response?.messages
+        //                 ? response?.messages[0]
+        //                 : "Error User Login"
+        //         }`,
+        //         placement: "topLeft",
+        //     });
+        //     emailRef.current.focus();
+        // }
+
+        // Bypass login for test purpose without API
+        const accessToken = DUMMMY_API_RESPONSE?.access_token;
+        const user = DUMMMY_API_RESPONSE?.userDetails;
+        const roles = DUMMMY_API_RESPONSE?.userDetails?.roles;
+
+        setAuth({ user, roles, accessToken });
+        setInitialLogin(true);
+
+        notification.success({
+            message: `User Logged In Successfully`,
+            placement: "topLeft",
+        });
+
+        navigate("/");
+
     };
 
     useEffect(() => {

@@ -1,8 +1,8 @@
+// API call functions, authentication functions are defined here
+
 import axios from "axios";
 import cookies from "js-cookie";
-import { BASE_URL } from './constants'
-
-const base_url = `${BASE_URL}/api/v1/`;
+import { BASE_URL } from './constants';
 
 const getAuthToken = () => {
     if (cookies.get("react_auth_user_data")) {
@@ -17,9 +17,12 @@ const getAuthToken = () => {
     }
 };
 
-const hasSession = () =>
-  localStorage.getItem("User") &&
-  JSON.parse(localStorage.getItem("User"))?.client_session_key;
+const hasSession = () => {
+  if(localStorage.getItem("User")) {
+    return JSON.parse(localStorage.getItem("User"))?.client_session_key;
+  }
+}
+
 
 const generateHeaders = () => {
   if (getAuthToken()) return { authorization: `Bearer ${getAuthToken()}` };
@@ -31,16 +34,13 @@ export const getData = async (query, data, no_token) => {
   try {
     let result = await axios({
       method: "GET",
-      url: `${base_url}${query}`,
+      url: `${BASE_URL}${query}`,
       params: data,
       headers: no_token ? {} : generateHeaders(),
     });
     return result.data;
   } catch (error) {
-    if (error?.response?.status === 401) {
-      localStorage.removeItem("User");
-      window.location = "/";
-    }
+    return error?.response?.data;
   }
 };
 
@@ -48,15 +48,12 @@ export const postData = async (query, data, no_token) => {
   try {
     let result = await axios({
       method: "POST",
-      url: `${base_url}${query}`,
+      url: `${BASE_URL}${query}`,
       headers: no_token ? {} : generateHeaders(),
       data: data,
     });
     return result.data;
   } catch (error) {
-    if (error?.response?.status === 401) {
-      localStorage.removeItem("user");
-      window.location = "/";
-    }
+    return error?.response?.data;
   }
 };
